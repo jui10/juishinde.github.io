@@ -1,0 +1,287 @@
+<title>Jui Shinde</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  /* Layout: one narrow reading column; the career runs as a vertical lineage, oldest source first, newest target last. */
+  :root {
+    --bg: #f2f6f8;
+    --surface: #ffffff;
+    --fg: #12202b;
+    --muted: #52646f;
+    --line: #d3dde3;
+    --accent: #0e6a6e;
+    --accent-soft: #dceeee;
+    --accent-ink: #ffffff;
+    --font-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e1820;
+      --surface: #15222c;
+      --fg: #e6eef3;
+      --muted: #93a5b2;
+      --line: #263944;
+      --accent: #62c9c4;
+      --accent-soft: #16343a;
+      --accent-ink: #06201f;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e1820;
+    --surface: #15222c;
+    --fg: #e6eef3;
+    --muted: #93a5b2;
+    --line: #263944;
+    --accent: #62c9c4;
+    --accent-soft: #16343a;
+    --accent-ink: #06201f;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.65;
+    padding-block: 56px 48px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .wrap { max-width: 720px; margin: 0 auto; display: grid; gap: 56px; }
+  h1, h2 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.1; }
+  h1 { font-size: clamp(2.6rem, 8vw, 4rem); font-weight: 700; letter-spacing: -0.02em; }
+  h2 { font-size: 1.55rem; font-weight: 700; letter-spacing: -0.01em; }
+  p { margin: 0; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* Hero */
+  .hero { display: grid; gap: 20px; }
+  .arc { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+  .arc span.step { color: var(--accent); }
+  .lead { font-size: 1.25rem; line-height: 1.45; max-width: 34ch; font-weight: 500; }
+  .intro { color: var(--muted); max-width: 62ch; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 4px; }
+  .btn {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 600;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+  }
+  .btn:hover { filter: brightness(1.08); }
+  .email { display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.9rem; }
+  .copy {
+    font: inherit;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--fg);
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 4px 10px;
+    cursor: pointer;
+  }
+  .copy:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Lineage */
+  .lineage { display: grid; gap: 0; margin-top: 24px; }
+  .node { display: grid; grid-template-columns: 150px 1fr; gap: 0 28px; padding-bottom: 32px; }
+  .node:last-child { padding-bottom: 0; }
+  .when { font-family: var(--font-mono); font-size: 0.82rem; color: var(--muted); padding-top: 3px; }
+  .body { position: relative; padding-left: 28px; border-left: 2px solid var(--line); min-width: 0; }
+  .body::before {
+    content: "";
+    position: absolute;
+    left: -7px; top: 6px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+  }
+  .node.now .body::before { background: var(--accent); }
+  .node:last-child .body { border-left-color: transparent; }
+  .node:last-child .body::after {
+    content: "";
+    position: absolute;
+    left: -2px; top: 18px; bottom: 0;
+    border-left: 2px solid var(--line);
+  }
+  .role { font-weight: 600; }
+  .org { color: var(--muted); font-size: 0.95rem; margin-bottom: 6px; }
+  .detail { max-width: 58ch; }
+
+  /* What I bring */
+  .bring { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
+  .bring > div { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 18px; display: grid; gap: 8px; align-content: start; }
+  .bring h3 { margin: 0; font-size: 1rem; font-weight: 600; }
+  .bring p { font-size: 0.93rem; color: var(--muted); }
+
+  .now-list { display: grid; gap: 14px; margin-top: 24px; padding: 0; list-style: none; }
+  .now-list li { display: grid; grid-template-columns: 110px 1fr; gap: 16px; align-items: baseline; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+  .now-list li:last-child { border-bottom: 0; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; padding: 0; list-style: none; }
+  .tags li { font-family: var(--font-mono); font-size: 0.8rem; background: var(--accent-soft); color: var(--fg); padding: 4px 10px; border-radius: 4px; }
+
+  footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 20px; }
+
+  @media (max-width: 640px) {
+    body { padding-block: 36px 32px; }
+    .wrap { gap: 44px; }
+    .node { grid-template-columns: 1fr; gap: 6px; }
+    .when { padding-left: 30px; }
+    .bring { grid-template-columns: 1fr; }
+    .now-list li { grid-template-columns: 1fr; gap: 2px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<main class="wrap">
+  <header class="hero">
+    <p class="label arc">
+      <span>Data governance</span><span class="step">&rarr;</span>
+      <span>Data modelling</span><span class="step">&rarr;</span>
+      <span>AI governance</span>
+    </p>
+    <h1>Jui Shinde</h1>
+    <p class="lead">Data governance and data modelling, about seven years in. Now moving into AI governance.</p>
+    <p class="intro">I started in SAP access governance at Schneider Electric, moved into analytics consulting, and for the last few years have designed dimensional and cloud data models for data-heavy work. What stays constant is how data is controlled, documented and trusted. I want to apply that to AI systems.</p>
+    <div class="actions">
+      <a class="btn" href="https://linkedin.com/in/juishinde1009">LinkedIn</a>
+      <span class="email">
+        <span id="email-text">juishinde63@gmail.com</span>
+        <button class="copy" id="copy-btn" type="button">Copy</button>
+      </span>
+    </div>
+  </header>
+
+  <section aria-labelledby="career">
+    <p class="label">Source to target</p>
+    <h2 id="career">Career so far</h2>
+    <div class="lineage">
+      <div class="node">
+        <div class="when">2017 &ndash; 2021</div>
+        <div class="body">
+          <div class="role">Functional Analyst</div>
+          <div class="org">Schneider Electric, Bengaluru</div>
+          <p class="detail">Wrote SAP user access management guidelines for all regions, reducing potential access risks by 15%. Ran access governance, GRC compliance and user provisioning across business units, and contributed to an RPA proof of concept for SAP access workflows.</p>
+        </div>
+      </div>
+      <div class="node">
+        <div class="when">2022 &ndash; 2023</div>
+        <div class="body">
+          <div class="role">Decision Analytics Associate Consultant</div>
+          <div class="org">ZS Associates, Pune</div>
+          <p class="detail">Analysed the market for a new pipeline drug for a U.S. manufacturer. Cleaned and integrated multi-source data and used basic machine learning to predict customer behaviour. Mentored junior team members.</p>
+        </div>
+      </div>
+      <div class="node">
+        <div class="when">2023 &ndash; Dec 2025</div>
+        <div class="body">
+          <div class="role">Data Modeller</div>
+          <div class="org">Cloudaeon, Pune</div>
+          <p class="detail">Built star and snowflake models in Erwin, with 35% faster queries and 20% better storage efficiency. Worked with business analysts to turn requirements into data structures, cutting modelling errors by 20%.</p>
+        </div>
+      </div>
+      <div class="node now">
+        <div class="when">Jan 2026 &ndash; present</div>
+        <div class="body">
+          <div class="role">Specialist, Data Engineering</div>
+          <div class="org">LTM (LTIMindtree), Pune</div>
+          <p class="detail">Designing an Azure bronze/silver/gold model in Hackolade for a reinsurance platform moving off a legacy Oracle warehouse. Reverse-engineering about 50 legacy SQL queries per region across four regions, to document the logic and map it into one star schema.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="bring">
+    <p class="label">Transferable work</p>
+    <h2 id="bring">What I bring to AI governance</h2>
+    <div class="bring">
+      <div>
+        <h3>Controls and policy</h3>
+        <p>Wrote and applied access guidelines across regions, and handled GRC compliance and provisioning.</p>
+      </div>
+      <div>
+        <h3>Documentation and traceability</h3>
+        <p>Turned undocumented legacy reporting logic into source-to-target mappings that others can follow.</p>
+      </div>
+      <div>
+        <h3>Plain-language translation</h3>
+        <p>Worked with business experts and analysts, and presented data models to clients.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="learning">
+    <p class="label">Right now</p>
+    <h2 id="learning">Learning and building</h2>
+    <ul class="now-list">
+      <li>
+        <span class="label">Studying</span>
+        <span>AI Ethics on Coursera, about 80% complete.</span>
+      </li>
+      <li>
+        <span class="label">Built</span>
+        <span>Contributed to an internal Generative AI proof of concept: researched LLM capabilities and ran exploratory prompt tests in Python.</span>
+      </li>
+      <li>
+        <span class="label">Community</span>
+        <span>Founded TechStree, an internal women-in-data group, which grew member engagement by 35% in six months.</span>
+      </li>
+    </ul>
+    <ul class="tags" aria-label="Tools and skills">
+      <li>Hackolade</li>
+      <li>Erwin</li>
+      <li>SQL</li>
+      <li>Azure</li>
+      <li>Dimensional modelling</li>
+      <li>Source-to-target mapping</li>
+      <li>GRC compliance</li>
+      <li>Python (beginner)</li>
+    </ul>
+  </section>
+
+  <footer>Based in Pune, India. B.E. Computer Science, Cummins College of Engineering for Women. Executive Program in Advanced Business Analytics, IIM Ahmedabad.</footer>
+</main>
+
+<script>
+  (function () {
+    var btn = document.getElementById("copy-btn");
+    var text = document.getElementById("email-text");
+    if (!btn || !text) return;
+    function selectText() {
+      try {
+        var r = document.createRange();
+        r.selectNodeContents(text);
+        var s = window.getSelection();
+        s.removeAllRanges();
+        s.addRange(r);
+      } catch (e) {}
+    }
+    btn.addEventListener("click", function () {
+      var done = function () { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy"; }, 1800); };
+      try {
+        navigator.clipboard.writeText(text.textContent).then(done, function () { selectText(); btn.textContent = "Press Ctrl+C"; });
+      } catch (e) { selectText(); btn.textContent = "Press Ctrl+C"; }
+    });
+  })();
+</script>
